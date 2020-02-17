@@ -14,6 +14,19 @@ const createUser = (_, args, context) => {
 };
 
 /**
+ * @param {{ where: import('../generated/prisma-client').UserWhereUniqueInput, data: import('../generated/prisma-client').UserUpdateInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { import('../generated/prisma-client').UserPromise }
+ */
+const updateUser = (_, args, context) => {
+  console.log("updateUser.args: %j", args)
+
+  const user = context.prisma.updateUser(args);  
+
+  return user;
+};
+
+/**
  * @param {{ where: import('../generated/prisma-client').UserWhereUniqueInput }} args
  * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
  * @returns { import('../generated/prisma-client').UserPromise }
@@ -27,22 +40,50 @@ const deleteUser = (_, args, context) => {
 };
 
 /**
- * @param {{ where: import('../generated/prisma-client').UserWhereUniqueInput, data: import('../generated/prisma-client').UserUpdateInput }} args
+ * @param {{ data: import('../generated/prisma-client').PostCreateInput }} args
  * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
- * @returns { import('../generated/prisma-client').UserPromise }
+ * @returns { import('../generated/prisma-client').PostPromise }
  */
-const updateUser = (_, args, context) => {
-  console.log("updateUser.args: %j", args)
+const createPost = (_, args, context) => {
+  console.log("createPost.args: %j", args)
 
-  const user = context.prisma.updateUser(args);  
+  const post = context.prisma.createPost(args.data);  
 
-  return user;
+  return post;
 };
 
 
+/**
+ * @param {{ where: import('../generated/prisma-client').PostWhereUniqueInput, data: import('../generated/prisma-client').PostUpdateInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { import('../generated/prisma-client').PostPromise }
+ */
+const updatePost = (_, args, context) => {
+  console.log("updatePost.args: %j", args)
+
+  const post = context.prisma.updatePost(args);  
+
+  return post;
+};
+
+/**
+ * @param {{ where: import('../generated/prisma-client').PostWhereUniqueInput }} args
+ * @param {{ prisma: import('../generated/prisma-client').Prisma }} context
+ * @returns { import('../generated/prisma-client').PostPromise }
+ */
+const deletePost = (_, args, context) => {
+  console.log("deletePost.args: %j", args)
+
+  const post = context.prisma.deletePost(args.where);  
+
+  return post;
+};
 
 module.exports = {
   createUser,
+  updateUser,
   deleteUser,
-  updateUser
+  createPost,
+  updatePost,
+  deletePost
 };
